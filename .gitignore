@@ -1,0 +1,44 @@
+# Секреты: локальный .env никогда не публикуем
+.env
+.env.*
+!.env.example
+
+# Виртуальные окружения Python
+.venv/
+venv/
+env/
+
+# Кэш Python и инструменты разработки
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Локальная IDE / ОС
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Архивы, резервные и временные файлы
+*.rar
+*.zip
+*.7z
+*.bak
+*.backup
+*.tmp
+*.log
+*backup*.csv
+
+# Черновые результаты тестовых запусков
+legacy_results/
+results/rps/smoke/
+results/rps/qwen35_smoke/
+results/rps/qwen_test/
+results/water/smoke/
+
+# Основные результаты RPS и Water Allocation НЕ игнорируются:
+# CSV и JSON из завершённых экспериментов можно публиковать.

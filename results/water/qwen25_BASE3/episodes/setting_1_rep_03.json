@@ -1,0 +1,2202 @@
+{
+  "version": 1,
+  "setting": 1,
+  "level": "low",
+  "persona": false,
+  "repeat": 3,
+  "days": 20,
+  "seed": 2025,
+  "supply_seed": 32046,
+  "supply_schedule": [
+    19,
+    10,
+    10,
+    13,
+    10,
+    16,
+    13,
+    16,
+    11,
+    16,
+    11,
+    13,
+    16,
+    12,
+    10,
+    16,
+    16,
+    17,
+    13,
+    11
+  ],
+  "mode": "ollama",
+  "model": "qwen2.5:7b",
+  "temperature": 0.7,
+  "players": {
+    "Alex": {
+      "name": "Alex",
+      "requirement": 8,
+      "salary": 70,
+      "hp": 10,
+      "balance": 1192,
+      "no_water_days": 0,
+      "alive": true,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Alex, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $70, HP 8/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 70) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maximize survival chances while avoiding unnecessary spending.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $8, Bob: $16, Cindy: $9, David: $10, Eric: $80. Winners: Eric. After allocation: Alex: balance $70, HP 7, no-water days 1, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $40, HP 10, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 10 units. Your current status: balance $140, HP 7/10, consecutive no-water days 1, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 140) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain health points without overextending.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 10. Submitted bids: Alex: $8, Bob: $10, Cindy: $7, David: $10, Eric: $8. Winners: Bob. After allocation: Alex: balance $140, HP 5, no-water days 2, alive; Bob: balance $140, HP 9, no-water days 0, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $160, HP 9, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 10 units. Your current status: balance $210, HP 5/10, consecutive no-water days 2, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 210) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to avoid further HP loss while maintaining survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 10. Submitted bids: Alex: $8, Bob: $9, Cindy: $6, David: $9, Eric: $6. Winners: Bob. After allocation: Alex: balance $210, HP 2, no-water days 3, alive; Bob: balance $206, HP 10, no-water days 0, alive; Cindy: balance $300, HP 2, no-water days 3, alive; David: balance $360, HP 2, no-water days 3, alive; Eric: balance $280, HP 7, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 13 units. Your current status: balance $280, HP 2/10, consecutive no-water days 3, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 280) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I win some water, as my HP is critically low.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 13. Submitted bids: Alex: $13, Bob: $9, Cindy: $10, David: $12, Eric: $12. Winners: Alex. After allocation: Alex: balance $267, HP 4, no-water days 0, alive; Bob: balance $281, HP 9, no-water days 1, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $400, HP 4, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 10 units. Your current status: balance $337, HP 4/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 337) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bid my exact daily requirement to ensure I secure enough water without overextending my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 5 public results. Supply 10. Submitted bids: Alex: $10, Bob: $10, Eric: $10. Winners: Alex. After allocation: Alex: balance $327, HP 6, no-water days 0, alive; Bob: balance $356, HP 7, no-water days 2, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 6. Available water: 16 units. Your current status: balance $397, HP 6/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 397) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I secure enough water, as having extra can help manage fluctuations in supply.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 6 public results. Supply 16. Submitted bids: Alex: $16, Bob: $18. Winners: Bob. After allocation: Alex: balance $397, HP 5, no-water days 1, alive; Bob: balance $413, HP 9, no-water days 0, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 7. Available water: 13 units. Your current status: balance $467, HP 5/10, consecutive no-water days 1, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 467) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly less than the available water to secure some, while managing my balance for future days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 7 public results. Supply 13. Submitted bids: Alex: $13, Bob: $13. Winners: Alex. After allocation: Alex: balance $454, HP 7, no-water days 0, alive; Bob: balance $488, HP 8, no-water days 1, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 8. Available water: 16 units. Your current status: balance $524, HP 7/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 524) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my chances of survival and build up my balance for future days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 8 public results. Supply 16. Submitted bids: Alex: $16, Bob: $16. Winners: Alex. After allocation: Alex: balance $508, HP 9, no-water days 0, alive; Bob: balance $563, HP 6, no-water days 2, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 9. Available water: 11 units. Your current status: balance $578, HP 9/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 578) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 11,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 9 public results. Supply 11. Submitted bids: Alex: $11, Bob: $11. Winners: Alex. After allocation: Alex: balance $567, HP 10, no-water days 0, alive; Bob: balance $638, HP 3, no-water days 3, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 10. Available water: 16 units. Your current status: balance $637, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 637) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 10 public results. Supply 16. Submitted bids: Alex: $16, Bob: $9. Winners: Alex. After allocation: Alex: balance $621, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 11. Available water: 11 units. Your current status: balance $691, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 691) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 11 public results. Supply 11. Submitted bids: Alex: $8. Winners: Alex. After allocation: Alex: balance $683, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 12. Available water: 13 units. Your current status: balance $753, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 753) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I secure enough water while maximizing my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 12 public results. Supply 13. Submitted bids: Alex: $13. Winners: Alex. After allocation: Alex: balance $740, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 13. Available water: 16 units. Your current status: balance $810, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 810) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 13 public results. Supply 16. Submitted bids: Alex: $16. Winners: Alex. After allocation: Alex: balance $794, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 14. Available water: 12 units. Your current status: balance $864, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 864) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 12,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 14 public results. Supply 12. Submitted bids: Alex: $12. Winners: Alex. After allocation: Alex: balance $852, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 15. Available water: 10 units. Your current status: balance $922, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 922) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 15 public results. Supply 10. Submitted bids: Alex: $10. Winners: Alex. After allocation: Alex: balance $912, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 16. Available water: 16 units. Your current status: balance $982, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 982) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 16 public results. Supply 16. Submitted bids: Alex: $16. Winners: Alex. After allocation: Alex: balance $966, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 17. Available water: 16 units. Your current status: balance $1036, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 1036) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 17 public results. Supply 16. Submitted bids: Alex: $16. Winners: Alex. After allocation: Alex: balance $1020, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 18. Available water: 17 units. Your current status: balance $1090, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 1090) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 17,\n  \"reason\": \"Bid slightly more than the available water to ensure I secure enough while maximizing my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 18 public results. Supply 17. Submitted bids: Alex: $17. Winners: Alex. After allocation: Alex: balance $1073, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 19. Available water: 13 units. Your current status: balance $1143, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 1143) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 19 public results. Supply 13. Submitted bids: Alex: $13. Winners: Alex. After allocation: Alex: balance $1130, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 20. Available water: 11 units. Your current status: balance $1200, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 1200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 20 public results. Supply 11. Submitted bids: Alex: $8. Winners: Alex. After allocation: Alex: balance $1192, HP 10, no-water days 0, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        }
+      ]
+    },
+    "Bob": {
+      "name": "Bob",
+      "requirement": 9,
+      "salary": 75,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Bob, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $75, HP 8/10, consecutive no-water days 0, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 75) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bidding slightly above my requirement to secure water, as losing would cost me HP.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $8, Bob: $16, Cindy: $9, David: $10, Eric: $80. Winners: Eric. After allocation: Alex: balance $70, HP 7, no-water days 1, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $40, HP 10, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 10 units. Your current status: balance $150, HP 7/10, consecutive no-water days 1, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 150) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bidding the maximum available water ensures a chance of winning while not overextending my funds.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 10. Submitted bids: Alex: $8, Bob: $10, Cindy: $7, David: $10, Eric: $8. Winners: Bob. After allocation: Alex: balance $140, HP 5, no-water days 2, alive; Bob: balance $140, HP 9, no-water days 0, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $160, HP 9, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 10 units. Your current status: balance $215, HP 9/10, consecutive no-water days 0, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 215) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement balances my chances of winning while not risking excess funds.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 10. Submitted bids: Alex: $8, Bob: $9, Cindy: $6, David: $9, Eric: $6. Winners: Bob. After allocation: Alex: balance $210, HP 2, no-water days 3, alive; Bob: balance $206, HP 10, no-water days 0, alive; Cindy: balance $300, HP 2, no-water days 3, alive; David: balance $360, HP 2, no-water days 3, alive; Eric: balance $280, HP 7, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 13 units. Your current status: balance $281, HP 10/10, consecutive no-water days 0, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 281) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement maximizes my chances of winning while managing my resources effectively.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 13. Submitted bids: Alex: $13, Bob: $9, Cindy: $10, David: $12, Eric: $12. Winners: Alex. After allocation: Alex: balance $267, HP 4, no-water days 0, alive; Bob: balance $281, HP 9, no-water days 1, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $400, HP 4, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 10 units. Your current status: balance $356, HP 9/10, consecutive no-water days 1, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 356) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bidding the maximum available water ensures I secure the water needed, as my HP is still high and I want to avoid consecutive days without water.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 5 public results. Supply 10. Submitted bids: Alex: $10, Bob: $10, Eric: $10. Winners: Alex. After allocation: Alex: balance $327, HP 6, no-water days 0, alive; Bob: balance $356, HP 7, no-water days 2, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 6. Available water: 16 units. Your current status: balance $431, HP 7/10, consecutive no-water days 2, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 431) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 18,\n  \"reason\": \"Bidding slightly more than my requirement increases my chances of winning, as there is extra water available and I want to avoid consecutive days without water.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 6 public results. Supply 16. Submitted bids: Alex: $16, Bob: $18. Winners: Bob. After allocation: Alex: balance $397, HP 5, no-water days 1, alive; Bob: balance $413, HP 9, no-water days 0, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 7. Available water: 13 units. Your current status: balance $488, HP 9/10, consecutive no-water days 0, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 488) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 13,\n  \"reason\": \"Bidding the maximum available water ensures I secure the necessary water while managing my resources effectively.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 7 public results. Supply 13. Submitted bids: Alex: $13, Bob: $13. Winners: Alex. After allocation: Alex: balance $454, HP 7, no-water days 0, alive; Bob: balance $488, HP 8, no-water days 1, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 8. Available water: 16 units. Your current status: balance $563, HP 8/10, consecutive no-water days 1, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 563) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 16,\n  \"reason\": \"Bidding the maximum available water ensures I secure the necessary water while maintaining my resources.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 8 public results. Supply 16. Submitted bids: Alex: $16, Bob: $16. Winners: Alex. After allocation: Alex: balance $508, HP 9, no-water days 0, alive; Bob: balance $563, HP 6, no-water days 2, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 9. Available water: 11 units. Your current status: balance $638, HP 6/10, consecutive no-water days 2, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 638) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 11,\n  \"reason\": \"Bidding the maximum available water ensures I secure my needed water while managing my resources.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 9 public results. Supply 11. Submitted bids: Alex: $11, Bob: $11. Winners: Alex. After allocation: Alex: balance $567, HP 10, no-water days 0, alive; Bob: balance $638, HP 3, no-water days 3, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $0, HP 0, no-water days 4, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 10. Available water: 16 units. Your current status: balance $713, HP 3/10, consecutive no-water days 3, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 713) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement maximizes my chances of winning while managing my limited HP.\"\n}"
+        }
+      ]
+    },
+    "Cindy": {
+      "name": "Cindy",
+      "requirement": 10,
+      "salary": 100,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Cindy, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $100, HP 8/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 9,\n  \"reason\": \"Bid slightly below my requirement to leave some room for others, reducing the risk of losing and incurring HP loss.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $8, Bob: $16, Cindy: $9, David: $10, Eric: $80. Winners: Eric. After allocation: Alex: balance $70, HP 7, no-water days 1, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $40, HP 10, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 10 units. Your current status: balance $200, HP 7/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 7,\n  \"reason\": \"Bid slightly below my requirement to avoid the risk of losing, which could lead to a significant HP loss.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 10. Submitted bids: Alex: $8, Bob: $10, Cindy: $7, David: $10, Eric: $8. Winners: Bob. After allocation: Alex: balance $140, HP 5, no-water days 2, alive; Bob: balance $140, HP 9, no-water days 0, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $160, HP 9, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 10 units. Your current status: balance $300, HP 5/10, consecutive no-water days 2, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 6,\n  \"reason\": \"I need to bid carefully to avoid losing, as consecutive no-water days could lead to HP loss.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 10. Submitted bids: Alex: $8, Bob: $9, Cindy: $6, David: $9, Eric: $6. Winners: Bob. After allocation: Alex: balance $210, HP 2, no-water days 3, alive; Bob: balance $206, HP 10, no-water days 0, alive; Cindy: balance $300, HP 2, no-water days 3, alive; David: balance $360, HP 2, no-water days 3, alive; Eric: balance $280, HP 7, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 13 units. Your current status: balance $400, HP 2/10, consecutive no-water days 3, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 400) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"I bid my full requirement to avoid any chance of losing, which could result in a significant HP loss.\"\n}"
+        }
+      ]
+    },
+    "David": {
+      "name": "David",
+      "requirement": 11,
+      "salary": 120,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are David, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bid slightly below maximum need to ensure survival while reserving funds for future days with lower available water.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $8, Bob: $16, Cindy: $9, David: $10, Eric: $80. Winners: Eric. After allocation: Alex: balance $70, HP 7, no-water days 1, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $40, HP 10, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 10 units. Your current status: balance $240, HP 7/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bid equal to available water to maximize chances of winning while ensuring survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 10. Submitted bids: Alex: $8, Bob: $10, Cindy: $7, David: $10, Eric: $8. Winners: Bob. After allocation: Alex: balance $140, HP 5, no-water days 2, alive; Bob: balance $140, HP 9, no-water days 0, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $160, HP 9, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 10 units. Your current status: balance $360, HP 5/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 9,\n  \"reason\": \"Bid slightly below maximum need to ensure survival while conserving funds for future days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 10. Submitted bids: Alex: $8, Bob: $9, Cindy: $6, David: $9, Eric: $6. Winners: Bob. After allocation: Alex: balance $210, HP 2, no-water days 3, alive; Bob: balance $206, HP 10, no-water days 0, alive; Cindy: balance $300, HP 2, no-water days 3, alive; David: balance $360, HP 2, no-water days 3, alive; Eric: balance $280, HP 7, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 13 units. Your current status: balance $480, HP 2/10, consecutive no-water days 3, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 480) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 12,\n  \"reason\": \"Bid close to maximum need but within budget to ensure a chance of survival while conserving funds for future days.\"\n}"
+        }
+      ]
+    },
+    "Eric": {
+      "name": "Eric",
+      "requirement": 12,
+      "salary": 120,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Eric, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 80,\n  \"reason\": \"Bid moderately high to secure water while keeping some balance for potential future losses.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $8, Bob: $16, Cindy: $9, David: $10, Eric: $80. Winners: Eric. After allocation: Alex: balance $70, HP 7, no-water days 1, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $40, HP 10, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 10 units. Your current status: balance $160, HP 10/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 160) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 8,\n  \"reason\": \"Bid low to maximize balance while securing water for survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 10. Submitted bids: Alex: $8, Bob: $10, Cindy: $7, David: $10, Eric: $8. Winners: Bob. After allocation: Alex: balance $140, HP 5, no-water days 2, alive; Bob: balance $140, HP 9, no-water days 0, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $160, HP 9, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 10 units. Your current status: balance $280, HP 9/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 280) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 6,\n  \"reason\": \"Bid moderately low to secure water while keeping balance for potential future losses.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 10. Submitted bids: Alex: $8, Bob: $9, Cindy: $6, David: $9, Eric: $6. Winners: Bob. After allocation: Alex: balance $210, HP 2, no-water days 3, alive; Bob: balance $206, HP 10, no-water days 0, alive; Cindy: balance $300, HP 2, no-water days 3, alive; David: balance $360, HP 2, no-water days 3, alive; Eric: balance $280, HP 7, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 13 units. Your current status: balance $400, HP 7/10, consecutive no-water days 2, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 400) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 12,\n  \"reason\": \"Bid at my full requirement to ensure survival, as having water is crucial.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 13. Submitted bids: Alex: $13, Bob: $9, Cindy: $10, David: $12, Eric: $12. Winners: Alex. After allocation: Alex: balance $267, HP 4, no-water days 0, alive; Bob: balance $281, HP 9, no-water days 1, alive; Cindy: balance $0, HP 0, no-water days 4, eliminated; David: balance $0, HP 0, no-water days 4, eliminated; Eric: balance $400, HP 4, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 10 units. Your current status: balance $520, HP 4/10, consecutive no-water days 3, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 520) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 10,\n  \"reason\": \"Bid at the maximum available water to secure my survival needs while keeping some balance.\"\n}"
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "day": 1,
+      "supply": 19,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 8,
+        "Bob": 16,
+        "Cindy": 9,
+        "David": 10,
+        "Eric": 80
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maximize survival chances while avoiding unnecessary spending.\"\n}",
+        "Bob": "{\n  \"bid\": 16,\n  \"reason\": \"Bidding slightly above my requirement to secure water, as losing would cost me HP.\"\n}",
+        "Cindy": "{\n  \"bid\": 9,\n  \"reason\": \"Bid slightly below my requirement to leave some room for others, reducing the risk of losing and incurring HP loss.\"\n}",
+        "David": "{\n  \"bid\": 10,\n  \"reason\": \"Bid slightly below maximum need to ensure survival while reserving funds for future days with lower available water.\"\n}",
+        "Eric": "{\n  \"bid\": 80,\n  \"reason\": \"Bid moderately high to secure water while keeping some balance for potential future losses.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 8,
+          "balance": 70,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 8,
+          "balance": 75,
+          "no_water_days": 0
+        },
+        "Cindy": {
+          "hp": 8,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 7,
+          "balance": 70,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 75,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 10,
+          "balance": 40,
+          "no_water_days": 0,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Eric"
+      ],
+      "allocated_water": 12,
+      "paid_total": 80,
+      "minimum_successful_bid": 80,
+      "total_submitted_bids": 123,
+      "efficiency": 0.008130081300813009,
+      "rsr_before": 0.38,
+      "rsr_after": 0.38
+    },
+    {
+      "day": 2,
+      "supply": 10,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 8,
+        "Bob": 10,
+        "Cindy": 7,
+        "David": 10,
+        "Eric": 8
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain health points without overextending.\"\n}",
+        "Bob": "{\n  \"bid\": 10,\n  \"reason\": \"Bidding the maximum available water ensures a chance of winning while not overextending my funds.\"\n}",
+        "Cindy": "{\n  \"bid\": 7,\n  \"reason\": \"Bid slightly below my requirement to avoid the risk of losing, which could lead to a significant HP loss.\"\n}",
+        "David": "{\n  \"bid\": 10,\n  \"reason\": \"Bid equal to available water to maximize chances of winning while ensuring survival.\"\n}",
+        "Eric": "{\n  \"bid\": 8,\n  \"reason\": \"Bid low to maximize balance while securing water for survival.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 7,
+          "balance": 140,
+          "no_water_days": 1
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 150,
+          "no_water_days": 1
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 10,
+          "balance": 160,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 5,
+          "balance": 140,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 140,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 200,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "David": {
+          "hp": 5,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 9,
+          "balance": 160,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Bob"
+      ],
+      "allocated_water": 9,
+      "paid_total": 10,
+      "minimum_successful_bid": 10,
+      "total_submitted_bids": 43,
+      "efficiency": 0.023255813953488372,
+      "rsr_before": 0.2,
+      "rsr_after": 0.2
+    },
+    {
+      "day": 3,
+      "supply": 10,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 8,
+        "Bob": 9,
+        "Cindy": 6,
+        "David": 9,
+        "Eric": 6
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to avoid further HP loss while maintaining survival.\"\n}",
+        "Bob": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement balances my chances of winning while not risking excess funds.\"\n}",
+        "Cindy": "{\n  \"bid\": 6,\n  \"reason\": \"I need to bid carefully to avoid losing, as consecutive no-water days could lead to HP loss.\"\n}",
+        "David": "{\n  \"bid\": 9,\n  \"reason\": \"Bid slightly below maximum need to ensure survival while conserving funds for future days.\"\n}",
+        "Eric": "{\n  \"bid\": 6,\n  \"reason\": \"Bid moderately low to secure water while keeping balance for potential future losses.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 5,
+          "balance": 210,
+          "no_water_days": 2
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 215,
+          "no_water_days": 0
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 300,
+          "no_water_days": 2
+        },
+        "David": {
+          "hp": 5,
+          "balance": 360,
+          "no_water_days": 2
+        },
+        "Eric": {
+          "hp": 9,
+          "balance": 280,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 2,
+          "balance": 210,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 10,
+          "balance": 206,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 2,
+          "balance": 300,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "David": {
+          "hp": 2,
+          "balance": 360,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 280,
+          "no_water_days": 2,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Bob"
+      ],
+      "allocated_water": 9,
+      "paid_total": 9,
+      "minimum_successful_bid": 9,
+      "total_submitted_bids": 38,
+      "efficiency": 0.02631578947368421,
+      "rsr_before": 0.2,
+      "rsr_after": 0.2
+    },
+    {
+      "day": 4,
+      "supply": 13,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 13,
+        "Bob": 9,
+        "Cindy": 10,
+        "David": 12,
+        "Eric": 12
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I win some water, as my HP is critically low.\"\n}",
+        "Bob": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement maximizes my chances of winning while managing my resources effectively.\"\n}",
+        "Cindy": "{\n  \"bid\": 10,\n  \"reason\": \"I bid my full requirement to avoid any chance of losing, which could result in a significant HP loss.\"\n}",
+        "David": "{\n  \"bid\": 12,\n  \"reason\": \"Bid close to maximum need but within budget to ensure a chance of survival while conserving funds for future days.\"\n}",
+        "Eric": "{\n  \"bid\": 12,\n  \"reason\": \"Bid at my full requirement to ensure survival, as having water is crucial.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 2,
+          "balance": 280,
+          "no_water_days": 3
+        },
+        "Bob": {
+          "hp": 10,
+          "balance": 281,
+          "no_water_days": 0
+        },
+        "Cindy": {
+          "hp": 2,
+          "balance": 400,
+          "no_water_days": 3
+        },
+        "David": {
+          "hp": 2,
+          "balance": 480,
+          "no_water_days": 3
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 400,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 4,
+          "balance": 267,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 281,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 4,
+          "balance": 400,
+          "no_water_days": 3,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 13,
+      "minimum_successful_bid": 13,
+      "total_submitted_bids": 56,
+      "efficiency": 0.017857142857142856,
+      "rsr_before": 0.26,
+      "rsr_after": 0.4482758620689655
+    },
+    {
+      "day": 5,
+      "supply": 10,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob"
+      ],
+      "bids": {
+        "Alex": 10,
+        "Bob": 10,
+        "Eric": 10
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 10,\n  \"reason\": \"Bid my exact daily requirement to ensure I secure enough water without overextending my balance.\"\n}",
+        "Bob": "{\n  \"bid\": 10,\n  \"reason\": \"Bidding the maximum available water ensures I secure the water needed, as my HP is still high and I want to avoid consecutive days without water.\"\n}",
+        "Eric": "{\n  \"bid\": 10,\n  \"reason\": \"Bid at the maximum available water to secure my survival needs while keeping some balance.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 4,
+          "balance": 337,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 356,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 4,
+          "balance": 520,
+          "no_water_days": 3
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 6,
+          "balance": 327,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 356,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 10,
+      "minimum_successful_bid": 10,
+      "total_submitted_bids": 30,
+      "efficiency": 0.03333333333333333,
+      "rsr_before": 0.3448275862068966,
+      "rsr_after": 0.5882352941176471
+    },
+    {
+      "day": 6,
+      "supply": 16,
+      "alive_before": [
+        "Alex",
+        "Bob"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob"
+      ],
+      "bids": {
+        "Alex": 16,
+        "Bob": 18
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I secure enough water, as having extra can help manage fluctuations in supply.\"\n}",
+        "Bob": "{\n  \"bid\": 18,\n  \"reason\": \"Bidding slightly more than my requirement increases my chances of winning, as there is extra water available and I want to avoid consecutive days without water.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 6,
+          "balance": 397,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 431,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 5,
+          "balance": 397,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 413,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Bob"
+      ],
+      "allocated_water": 9,
+      "paid_total": 18,
+      "minimum_successful_bid": 18,
+      "total_submitted_bids": 34,
+      "efficiency": 0.029411764705882353,
+      "rsr_before": 0.9411764705882353,
+      "rsr_after": 0.9411764705882353
+    },
+    {
+      "day": 7,
+      "supply": 13,
+      "alive_before": [
+        "Alex",
+        "Bob"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob"
+      ],
+      "bids": {
+        "Alex": 13,
+        "Bob": 13
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly less than the available water to secure some, while managing my balance for future days.\"\n}",
+        "Bob": "{\n  \"bid\": 13,\n  \"reason\": \"Bidding the maximum available water ensures I secure the necessary water while managing my resources effectively.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 5,
+          "balance": 467,
+          "no_water_days": 1
+        },
+        "Bob": {
+          "hp": 9,
+          "balance": 488,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 7,
+          "balance": 454,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 8,
+          "balance": 488,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 13,
+      "minimum_successful_bid": 13,
+      "total_submitted_bids": 26,
+      "efficiency": 0.038461538461538464,
+      "rsr_before": 0.7647058823529411,
+      "rsr_after": 0.7647058823529411
+    },
+    {
+      "day": 8,
+      "supply": 16,
+      "alive_before": [
+        "Alex",
+        "Bob"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob"
+      ],
+      "bids": {
+        "Alex": 16,
+        "Bob": 16
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my chances of survival and build up my balance for future days.\"\n}",
+        "Bob": "{\n  \"bid\": 16,\n  \"reason\": \"Bidding the maximum available water ensures I secure the necessary water while maintaining my resources.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 7,
+          "balance": 524,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 8,
+          "balance": 563,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 9,
+          "balance": 508,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 6,
+          "balance": 563,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 16,
+      "minimum_successful_bid": 16,
+      "total_submitted_bids": 32,
+      "efficiency": 0.03125,
+      "rsr_before": 0.9411764705882353,
+      "rsr_after": 0.9411764705882353
+    },
+    {
+      "day": 9,
+      "supply": 11,
+      "alive_before": [
+        "Alex",
+        "Bob"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob"
+      ],
+      "bids": {
+        "Alex": 11,
+        "Bob": 11
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 11,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}",
+        "Bob": "{\n  \"bid\": 11,\n  \"reason\": \"Bidding the maximum available water ensures I secure my needed water while managing my resources.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 9,
+          "balance": 578,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 6,
+          "balance": 638,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 567,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 3,
+          "balance": 638,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 11,
+      "minimum_successful_bid": 11,
+      "total_submitted_bids": 22,
+      "efficiency": 0.045454545454545456,
+      "rsr_before": 0.6470588235294118,
+      "rsr_after": 0.6470588235294118
+    },
+    {
+      "day": 10,
+      "supply": 16,
+      "alive_before": [
+        "Alex",
+        "Bob"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 16,
+        "Bob": 9
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}",
+        "Bob": "{\n  \"bid\": 9,\n  \"reason\": \"Bidding my exact water requirement maximizes my chances of winning while managing my limited HP.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 637,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 3,
+          "balance": 713,
+          "no_water_days": 3
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 621,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 16,
+      "minimum_successful_bid": 16,
+      "total_submitted_bids": 25,
+      "efficiency": 0.04,
+      "rsr_before": 0.9411764705882353,
+      "rsr_after": 2.0
+    },
+    {
+      "day": 11,
+      "supply": 11,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 8
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 691,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 683,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 8,
+      "minimum_successful_bid": 8,
+      "total_submitted_bids": 8,
+      "efficiency": 0.125,
+      "rsr_before": 1.375,
+      "rsr_after": 1.375
+    },
+    {
+      "day": 12,
+      "supply": 13,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 13
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly more than my daily requirement to ensure I secure enough water while maximizing my balance.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 753,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 740,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 13,
+      "minimum_successful_bid": 13,
+      "total_submitted_bids": 13,
+      "efficiency": 0.07692307692307693,
+      "rsr_before": 1.625,
+      "rsr_after": 1.625
+    },
+    {
+      "day": 13,
+      "supply": 16,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 16
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 810,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 794,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 16,
+      "minimum_successful_bid": 16,
+      "total_submitted_bids": 16,
+      "efficiency": 0.0625,
+      "rsr_before": 2.0,
+      "rsr_after": 2.0
+    },
+    {
+      "day": 14,
+      "supply": 12,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 12
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 12,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 864,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 852,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 12,
+      "minimum_successful_bid": 12,
+      "total_submitted_bids": 12,
+      "efficiency": 0.08333333333333333,
+      "rsr_before": 1.5,
+      "rsr_after": 1.5
+    },
+    {
+      "day": 15,
+      "supply": 10,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 10
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 10,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 922,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 912,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 10,
+      "minimum_successful_bid": 10,
+      "total_submitted_bids": 10,
+      "efficiency": 0.1,
+      "rsr_before": 1.25,
+      "rsr_after": 1.25
+    },
+    {
+      "day": 16,
+      "supply": 16,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 16
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 982,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 966,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 16,
+      "minimum_successful_bid": 16,
+      "total_submitted_bids": 16,
+      "efficiency": 0.0625,
+      "rsr_before": 2.0,
+      "rsr_after": 2.0
+    },
+    {
+      "day": 17,
+      "supply": 16,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 16
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 16,\n  \"reason\": \"Bid the full available water to maximize my resources and ensure a strong position for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1036,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1020,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 16,
+      "minimum_successful_bid": 16,
+      "total_submitted_bids": 16,
+      "efficiency": 0.0625,
+      "rsr_before": 2.0,
+      "rsr_after": 2.0
+    },
+    {
+      "day": 18,
+      "supply": 17,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 17
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 17,\n  \"reason\": \"Bid slightly more than the available water to ensure I secure enough while maximizing my balance.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1090,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1073,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 17,
+      "minimum_successful_bid": 17,
+      "total_submitted_bids": 17,
+      "efficiency": 0.058823529411764705,
+      "rsr_before": 2.125,
+      "rsr_after": 2.125
+    },
+    {
+      "day": 19,
+      "supply": 13,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 13
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 13,\n  \"reason\": \"Bid slightly less than the available water to ensure I secure enough while managing my balance.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1143,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1130,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 13,
+      "minimum_successful_bid": 13,
+      "total_submitted_bids": 13,
+      "efficiency": 0.07692307692307693,
+      "rsr_before": 1.625,
+      "rsr_after": 1.625
+    },
+    {
+      "day": 20,
+      "supply": 11,
+      "alive_before": [
+        "Alex"
+      ],
+      "alive_after": [
+        "Alex"
+      ],
+      "bids": {
+        "Alex": 8
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 8,\n  \"reason\": \"Bid my exact daily requirement to maintain full health points without overextending.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1200,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 1192,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "David": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Alex"
+      ],
+      "allocated_water": 8,
+      "paid_total": 8,
+      "minimum_successful_bid": 8,
+      "total_submitted_bids": 8,
+      "efficiency": 0.125,
+      "rsr_before": 1.375,
+      "rsr_after": 1.375
+    }
+  ],
+  "pending": null,
+  "complete": true
+}

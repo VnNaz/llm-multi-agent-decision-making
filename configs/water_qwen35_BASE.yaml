@@ -1,0 +1,19 @@
+# Базовый эксперимент: 6 условий, 20 дней, 3 повтора (экономный режим).
+experiment:
+  game: water_allocation
+  settings: all
+  settings_file: null
+  num_rounds: 20
+  num_tests: 3
+  seed: 2025
+llm:
+  provider: ollama
+  model: hf.co/Canfield/Qwen3.5-9B-Q4_K_M-GGUF:Q4_K_M
+  temperature: 0.7
+  max_tokens: 2048
+  timeout: 240
+  retries: 2
+  api_key_env: null
+  base_url: null
+output:
+  directory: results/water/qwen35_BASE3

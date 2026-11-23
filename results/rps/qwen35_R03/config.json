@@ -1,0 +1,23 @@
+{
+  "experiment": {
+    "game": "rps",
+    "scenarios": "all",
+    "scenarios_file": null,
+    "num_rounds": 40,
+    "num_tests": 10,
+    "seed": 2024
+  },
+  "llm": {
+    "provider": "ollama",
+    "model": "hf.co/Canfield/Qwen3.5-9B-Q4_K_M-GGUF:Q4_K_M",
+    "temperature": 0.7,
+    "max_tokens": 100,
+    "timeout": 120,
+    "retries": 1,
+    "api_key_env": null,
+    "base_url": null
+  },
+  "output": {
+    "directory": "results/rps/qwen35_R03"
+  }
+}

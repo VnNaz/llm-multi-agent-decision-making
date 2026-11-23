@@ -1,0 +1,24 @@
+{
+  "experiment": {
+    "game": "water_allocation",
+    "settings": "all",
+    "settings_file": null,
+    "num_rounds": 20,
+    "num_tests": 3,
+    "seed": 2025
+  },
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "timeout": 180,
+    "retries": 2,
+    "api_key_env": "ANTHROPIC_API_KEY",
+    "base_url": null,
+    "water_structured_output": true
+  },
+  "output": {
+    "directory": "results/water/claude_BASE3"
+  }
+}

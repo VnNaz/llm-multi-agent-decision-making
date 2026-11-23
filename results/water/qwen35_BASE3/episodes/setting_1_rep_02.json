@@ -1,0 +1,2648 @@
+{
+  "version": 1,
+  "setting": 1,
+  "level": "low",
+  "persona": false,
+  "repeat": 2,
+  "days": 20,
+  "seed": 2025,
+  "supply_seed": 22039,
+  "supply_schedule": [
+    19,
+    14,
+    15,
+    11,
+    13,
+    17,
+    15,
+    12,
+    13,
+    17,
+    11,
+    17,
+    16,
+    17,
+    17,
+    13,
+    15,
+    18,
+    10,
+    19
+  ],
+  "mode": "ollama",
+  "model": "hf.co/Canfield/Qwen3.5-9B-Q4_K_M-GGUF:Q4_K_M",
+  "temperature": 0.7,
+  "players": {
+    "Alex": {
+      "name": "Alex",
+      "requirement": 8,
+      "salary": 70,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Alex, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $70, HP 8/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 70) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 70,\n  \"reason\": \"On Day 1, I have $70 and need 8 units of water. The available water is 19 units. Since I am the only player bidding (others' bids are unknown but I must bid to win), bidding my full salary ($70) guarantees I win the water if I am the highest bidder. Winning restores 2 HP (to 10) and resets the no-water counter. Given the high risk of HP loss on consecutive failures, securing water immediately is the optimal survival strategy.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $70, Bob: $75, Cindy: $100, David: $120, Eric: $120. Winners: David, Alex. After allocation: Alex: balance $0, HP 10, no-water days 0, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $0, HP 10, no-water days 0, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 14 units. Your current status: balance $70, HP 10/10, consecutive no-water days 0, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 70) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 70,\n  \"reason\": \"I have $70 and need 8 units. Available water is 14. To ensure survival and reset the no-water counter (currently 0 for me, but others are at 1), I must bid high enough to win. Since I won yesterday with $70, bidding $70 again is a safe strategy to secure water, restore HP to 10, and avoid the HP penalty. Winning is critical as losing would drop my HP to 8, and subsequent losses could eliminate me quickly.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 14. Submitted bids: Alex: $70, Bob: $150, Cindy: $140, David: $120, Eric: $240. Winners: Eric. After allocation: Alex: balance $70, HP 9, no-water days 1, alive; Bob: balance $150, HP 5, no-water days 2, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $120, HP 9, no-water days 1, alive; Eric: balance $0, HP 9, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 15 units. Your current status: balance $140, HP 9/10, consecutive no-water days 1, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 140) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 140,\n  \"reason\": \"I am currently at 9 HP with 1 consecutive no-water day. Losing today would drop me to 8 HP and increase the streak to 2, risking elimination on the next loss. Available water is 15 units. To guarantee a win and reset my streak, I must bid higher than any potential competitor. David and Eric previously bid high ($120 and $240 respectively), but their current balances are $120 and $0. Bob has $150. Cindy has $200. To be safe against high rollers like Cindy or a wealthy Bob, I should bid my maximum balance ($140) to ensure I win the water, restore HP to 10, and reset the no-water counter to 0.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 15. Submitted bids: Alex: $140, Bob: $225, Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $140, HP 7, no-water days 2, alive; Bob: balance $225, HP 2, no-water days 3, alive; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $240, HP 7, no-water days 2, alive; Eric: balance $120, HP 8, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 11 units. Your current status: balance $210, HP 7/10, consecutive no-water days 2, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 210) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 210,\n  \"reason\": \"I am at 7 HP with a streak of 2 no-water days. Losing today would drop me to 6 HP and increase the streak to 3, putting me at extreme risk of elimination (HP <= 0) on the next loss. Available water is 11 units. To guarantee survival, I must win the bid. My balance is $210. Bidding my maximum ($210) ensures I am the highest bidder regardless of what others bid (since no one else has more than $225, and even if Bob bids high, I need to be safe). Winning will restore 2 HP to 9 and reset the streak to 0, which is critical for long-term survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 11. Submitted bids: Alex: $210, Bob: $300, Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $210, HP 4, no-water days 3, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 6, no-water days 1, alive; David: balance $0, HP 9, no-water days 0, alive; Eric: balance $240, HP 6, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 13 units. Your current status: balance $280, HP 4/10, consecutive no-water days 3, daily income $70, daily water requirement 8 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 280) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 280,\n  \"reason\": \"I am at 4 HP with a streak of 3 no-water days. Losing today would drop me to 1 HP and increase the streak to 4, meaning the next loss would eliminate me (HP <= 0). Available water is 13 units. To guarantee survival, I must win the bid. My balance is $280. Bidding my maximum ($280) ensures I am the highest bidder (since David has $0 and others have less), securing the water, restoring 2 HP to 6, and resetting the streak to 0.\"\n}"
+        }
+      ]
+    },
+    "Bob": {
+      "name": "Bob",
+      "requirement": 9,
+      "salary": 75,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 4,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Bob, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $75, HP 8/10, consecutive no-water days 0, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 75) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 75,\n  \"reason\": \"On Day 1, I have $75 and need 9 units of water. The available water is 19 units. If I bid my maximum ($75), I am guaranteed to win regardless of others' bids (since the total water needed by others is 8+10+11+12=41, but water is random 10-19; even if others bid high, my high bid ensures I get water if I am among the highest bidders). Winning restores HP to 10 and resets the no-water counter. Losing on Day 1 would cost 1 HP (dropping to 7) and start a dangerous streak. Given I start with 8 HP, I cannot afford a loss. Bidding $75 maximizes my chance of winning immediately to secure survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $70, Bob: $75, Cindy: $100, David: $120, Eric: $120. Winners: David, Alex. After allocation: Alex: balance $0, HP 10, no-water days 0, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $0, HP 10, no-water days 0, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 14 units. Your current status: balance $150, HP 7/10, consecutive no-water days 1, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 150) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 150,\n  \"reason\": \"I am on a 1-day streak without water, which means a loss today would cost me 1 HP, dropping me to 6 HP. I have $150, which is significantly higher than any other player's maximum possible bid (Cindy's max is $100, others have less). By bidding my full balance of $150, I guarantee a win regardless of what others bid. Winning restores my HP to 10 and resets the streak, which is critical for long-term survival. Losing now would put me in a dangerous position with low HP and a growing streak.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 14. Submitted bids: Alex: $70, Bob: $150, Cindy: $140, David: $120, Eric: $240. Winners: Eric. After allocation: Alex: balance $70, HP 9, no-water days 1, alive; Bob: balance $150, HP 5, no-water days 2, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $120, HP 9, no-water days 1, alive; Eric: balance $0, HP 9, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 15 units. Your current status: balance $225, HP 5/10, consecutive no-water days 2, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 225) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 225,\n  \"reason\": \"I am on a 2-day streak without water. A loss today would cost me 2 HP, dropping me to 3 HP. With only 3 HP remaining, I can only afford one more loss before elimination (since HP <= 0 eliminates a player). I have $225, which is the highest possible bid I can make. Bidding my full balance guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the dangerous streak. This is the safest play to avoid being eliminated on Day 4.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 15. Submitted bids: Alex: $140, Bob: $225, Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $140, HP 7, no-water days 2, alive; Bob: balance $225, HP 2, no-water days 3, alive; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $240, HP 7, no-water days 2, alive; Eric: balance $120, HP 8, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 11 units. Your current status: balance $300, HP 2/10, consecutive no-water days 3, daily income $75, daily water requirement 9 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 300,\n  \"reason\": \"I am on a 3-day streak without water. A loss today would cost me 3 HP, dropping me from 2 HP to -1 HP, which eliminates me immediately. I have $300, which is the maximum possible bid. Bidding my full balance guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the streak. This is the only viable option to survive.\"\n}"
+        }
+      ]
+    },
+    "Cindy": {
+      "name": "Cindy",
+      "requirement": 10,
+      "salary": 100,
+      "hp": 8,
+      "balance": 100,
+      "no_water_days": 1,
+      "alive": true,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Cindy, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $100, HP 8/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"On Day 1, I have $100 and need 10 water units. With 19 units available, bidding my full salary ensures I win the water regardless of others' bids, restoring my HP to 10 and resetting my streak. This maximizes my survival chances for the long term.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $70, Bob: $75, Cindy: $100, David: $120, Eric: $120. Winners: David, Alex. After allocation: Alex: balance $0, HP 10, no-water days 0, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $0, HP 10, no-water days 0, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 14 units. Your current status: balance $200, HP 7/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 140,\n  \"reason\": \"I have $200 and need 10 water units. With only 14 units available, I must bid high enough to win. Bidding $140 ensures I win the allocation (since the total supply is 14, and I need 10, I just need to outbid anyone else who wants water). Winning restores my HP to 10 and resets my consecutive no-water streak to 0, which is critical since I am currently at risk of losing HP on the next day if I fail again.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 14. Submitted bids: Alex: $70, Bob: $150, Cindy: $140, David: $120, Eric: $240. Winners: Eric. After allocation: Alex: balance $70, HP 9, no-water days 1, alive; Bob: balance $150, HP 5, no-water days 2, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $120, HP 9, no-water days 1, alive; Eric: balance $0, HP 9, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 15 units. Your current status: balance $300, HP 5/10, consecutive no-water days 2, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 5 HP with a 2-day streak of no water. If I fail today, I lose 2 more HP (total 7) and the streak resets to 1, but I am still in danger. If I fail tomorrow, I lose 3 HP (total 5) and the streak resets to 1. However, the immediate threat is reaching 0 HP. With 15 units available and my need being 10, I must win. Bidding my full balance of $300 guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the streak to 0, ensuring survival for the next day.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 15. Submitted bids: Alex: $140, Bob: $225, Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $140, HP 7, no-water days 2, alive; Bob: balance $225, HP 2, no-water days 3, alive; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $240, HP 7, no-water days 2, alive; Eric: balance $120, HP 8, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 11 units. Your current status: balance $100, HP 7/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With only 11 units available, the water is scarce. To ensure I win the allocation and avoid taking damage, I must bid the maximum possible amount ($100). Winning will restore my HP to 10 and keep my streak at 0, which is crucial given the high risk of elimination for other players who are low on HP.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 11. Submitted bids: Alex: $210, Bob: $300, Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $210, HP 4, no-water days 3, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 6, no-water days 1, alive; David: balance $0, HP 9, no-water days 0, alive; Eric: balance $240, HP 6, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 13 units. Your current status: balance $200, HP 6/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I have $200 and need 10 water units. With 13 units available, the supply is tight. I am currently at 6 HP with a 1-day streak. If I fail today, I lose 1 HP (to 5) and the streak resets to 0, but I remain vulnerable. To guarantee survival and reset my streak to 0 while maximizing my safety margin, I will bid my full balance of $200. This ensures I win the allocation regardless of others' bids, restoring my HP to 10 and securing my position for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 5 public results. Supply 13. Submitted bids: Alex: $280, Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 4, no-water days 2, alive; David: balance $120, HP 8, no-water days 1, alive; Eric: balance $0, HP 8, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 6. Available water: 17 units. Your current status: balance $300, HP 4/10, consecutive no-water days 2, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 4 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 2) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -1, elimination). I must win today to reset the streak to 0 and restore HP to 10. With 17 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of others' bids, ensuring survival and resetting my status.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 6 public results. Supply 17. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $240, HP 6, no-water days 2, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 7. Available water: 15 units. Your current status: balance $100, HP 6/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 15 units available, the supply is sufficient for multiple players. However, I am currently at 6 HP with a 0-day streak. While I am not in immediate danger of elimination, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 7 public results. Supply 15. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $0, HP 8, no-water days 0, alive; Eric: balance $240, HP 5, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 8. Available water: 12 units. Your current status: balance $200, HP 5/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 12 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 8 public results. Supply 12. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $0, HP 7, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 9. Available water: 13 units. Your current status: balance $300, HP 3/10, consecutive no-water days 2, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 3 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 1) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -2, elimination). I must win today to reset the streak to 0 and restore my HP to 10. With 13 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of David's or Eric's bids, ensuring survival and resetting my status.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 9 public results. Supply 13. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 5, no-water days 0, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $120, HP 6, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 10. Available water: 17 units. Your current status: balance $100, HP 5/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 5 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 10 public results. Supply 17. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 4, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $240, HP 4, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 11. Available water: 11 units. Your current status: balance $200, HP 4/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 4 HP with a 1-day streak. If I fail today, I lose 1 HP (to 3) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 1), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 11 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 11 public results. Supply 11. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $120, HP 6, no-water days 1, alive; Eric: balance $360, HP 1, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 12. Available water: 17 units. Your current status: balance $100, HP 6/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 6 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 12 public results. Supply 17. Submitted bids: Cindy: $100, David: $240, Eric: $480. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $240, HP 4, no-water days 2, alive; Eric: balance $0, HP 3, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 13. Available water: 16 units. Your current status: balance $200, HP 5/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 16 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 13 public results. Supply 16. Submitted bids: Cindy: $200, David: $360, Eric: $120. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $0, HP 6, no-water days 0, alive; Eric: balance $120, HP 2, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 14. Available water: 17 units. Your current status: balance $300, HP 3/10, consecutive no-water days 2, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 300) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 3 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 1) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -2, elimination). I must win today to reset the streak to 0 and restore my HP to 10. With 17 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of David's or Eric's bids, ensuring survival and resetting my status.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 14 public results. Supply 17. Submitted bids: Cindy: $300, David: $120, Eric: $240. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 5, no-water days 0, alive; David: balance $120, HP 5, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 15. Available water: 17 units. Your current status: balance $100, HP 5/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 5 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 15 public results. Supply 17. Submitted bids: Cindy: $100, David: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 4, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 16. Available water: 13 units. Your current status: balance $200, HP 4/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 4 HP with a 1-day streak. If I fail today, I lose 1 HP (to 3) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 1), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 13 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's bids, securing my safety for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 16 public results. Supply 13. Submitted bids: Cindy: $200, David: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $120, HP 6, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 17. Available water: 15 units. Your current status: balance $100, HP 6/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 15 units available, the supply is sufficient for multiple players. I am at 6 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 17 public results. Supply 15. Submitted bids: Cindy: $100, David: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $0, HP 8, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 18. Available water: 18 units. Your current status: balance $200, HP 5/10, consecutive no-water days 1, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 200) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 18 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's bids, securing my safety for the final day.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 18 public results. Supply 18. Submitted bids: Cindy: $200, David: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 19. Available water: 10 units. Your current status: balance $100, HP 7/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With exactly 10 units available, the water is extremely scarce. To ensure I win the allocation and avoid taking damage on the penultimate day, I must bid the maximum possible amount ($100). Winning will restore my HP to 10 and keep my streak at 0, which is crucial for surviving the final day.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 19 public results. Supply 10. Submitted bids: Cindy: $100, David: $240. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 9, no-water days 0, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 20. Available water: 19 units. Your current status: balance $100, HP 9/10, consecutive no-water days 0, daily income $100, daily water requirement 10 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 100) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 100,\n  \"reason\": \"It is Day 20, the final day. I have $100 and need 10 water units. With 19 units available, the supply is sufficient. I am at 9 HP with a 0-day streak. While I am not in immediate danger of elimination (I would only need to survive today), winning today is the safest strategy to maintain my HP at 10 and ensure I complete the 20-day challenge. Bidding my full balance of $100 guarantees a win regardless of David's bid, securing my survival and completing the objective.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 20 public results. Supply 19. Submitted bids: Cindy: $100, David: $360. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 8, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        }
+      ]
+    },
+    "David": {
+      "name": "David",
+      "requirement": 11,
+      "salary": 120,
+      "hp": 7,
+      "balance": 0,
+      "no_water_days": 0,
+      "alive": true,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are David, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I need 11 units of water to reset my consecutive no-water counter and restore HP. With a salary of $120 and no current debt, I can afford the maximum bid to ensure I win the allocation against any competitor, securing my survival for Day 1.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $70, Bob: $75, Cindy: $100, David: $120, Eric: $120. Winners: David, Alex. After allocation: Alex: balance $0, HP 10, no-water days 0, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $0, HP 10, no-water days 0, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 14 units. Your current status: balance $120, HP 10/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 10 and reset my no-water counter. With 14 units available, I must outbid the others. Alex and David are likely to bid high again to avoid penalties. Bidding $120 ensures I win if there is enough water, protecting my health for the long term.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 14. Submitted bids: Alex: $70, Bob: $150, Cindy: $140, David: $120, Eric: $240. Winners: Eric. After allocation: Alex: balance $70, HP 9, no-water days 1, alive; Bob: balance $150, HP 5, no-water days 2, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $120, HP 9, no-water days 1, alive; Eric: balance $0, HP 9, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 15 units. Your current status: balance $240, HP 9/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need to secure water immediately to stop my consecutive no-water counter from increasing (currently at 1) and to restore my HP. With 15 units available, I must outbid the aggressive bidders like Eric ($240) and Cindy ($140) to ensure I win the allocation and survive.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 15. Submitted bids: Alex: $140, Bob: $225, Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $140, HP 7, no-water days 2, alive; Bob: balance $225, HP 2, no-water days 3, alive; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $240, HP 7, no-water days 2, alive; Eric: balance $120, HP 8, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 11 units. Your current status: balance $360, HP 7/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 11 units available (exactly my need), I must outbid everyone. Bidding my maximum balance of $360 guarantees a win regardless of others' bids, securing my survival for this critical day.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 11. Submitted bids: Alex: $210, Bob: $300, Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $210, HP 4, no-water days 3, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 6, no-water days 1, alive; David: balance $0, HP 9, no-water days 0, alive; Eric: balance $240, HP 6, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 13 units. Your current status: balance $120, HP 9/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 9 and reset my no-water counter. With 13 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 5.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 5 public results. Supply 13. Submitted bids: Alex: $280, Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 4, no-water days 2, alive; David: balance $120, HP 8, no-water days 1, alive; Eric: balance $0, HP 8, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 6. Available water: 17 units. Your current status: balance $240, HP 8/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 6.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 6 public results. Supply 17. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $240, HP 6, no-water days 2, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 7. Available water: 15 units. Your current status: balance $360, HP 6/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 15 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 7.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 7 public results. Supply 15. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $0, HP 8, no-water days 0, alive; Eric: balance $240, HP 5, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 8. Available water: 12 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 8 and reset my no-water counter. With 12 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 8.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 8 public results. Supply 12. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $0, HP 7, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 9. Available water: 13 units. Your current status: balance $240, HP 7/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 13 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 9.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 9 public results. Supply 13. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 5, no-water days 0, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $120, HP 6, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 10. Available water: 17 units. Your current status: balance $360, HP 5/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 10.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 10 public results. Supply 17. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 4, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $240, HP 4, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 11. Available water: 11 units. Your current status: balance $120, HP 7/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 7 and reset my no-water counter. With 11 units available (exactly my need), I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 11.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 11 public results. Supply 11. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $120, HP 6, no-water days 1, alive; Eric: balance $360, HP 1, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 12. Available water: 17 units. Your current status: balance $240, HP 6/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 12.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 12 public results. Supply 17. Submitted bids: Cindy: $100, David: $240, Eric: $480. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $240, HP 4, no-water days 2, alive; Eric: balance $0, HP 3, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 13. Available water: 16 units. Your current status: balance $360, HP 4/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 16 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 13.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 13 public results. Supply 16. Submitted bids: Cindy: $200, David: $360, Eric: $120. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $0, HP 6, no-water days 0, alive; Eric: balance $120, HP 2, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 14. Available water: 17 units. Your current status: balance $120, HP 6/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 6 and reset my no-water counter. With 17 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 14.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 14 public results. Supply 17. Submitted bids: Cindy: $300, David: $120, Eric: $240. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 5, no-water days 0, alive; David: balance $120, HP 5, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 15. Available water: 17 units. Your current status: balance $240, HP 5/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive player (Cindy) who is likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 15.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 15 public results. Supply 17. Submitted bids: Cindy: $100, David: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 4, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 16. Available water: 13 units. Your current status: balance $120, HP 7/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 7 and reset my no-water counter. With 13 units available, I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 16.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 16 public results. Supply 13. Submitted bids: Cindy: $200, David: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $120, HP 6, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 17. Available water: 15 units. Your current status: balance $240, HP 6/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 15 units available, I must outbid the remaining competitor (Cindy) who is likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 17.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 17 public results. Supply 15. Submitted bids: Cindy: $100, David: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $0, HP 8, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 18. Available water: 18 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 8 and reset my no-water counter. With 18 units available, I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 18.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 18 public results. Supply 18. Submitted bids: Cindy: $200, David: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 19. Available water: 10 units. Your current status: balance $240, HP 7/10, consecutive no-water days 1, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With only 10 units available (less than my 11-unit need), I cannot win the allocation regardless of my bid. However, I must still place a valid bid. Since I cannot win, I will bid my maximum balance ($240) to ensure I don't accidentally win if the rules allow partial allocation or if I misjudged the supply, but realistically I will lose and take HP damage. Wait, the rule says 'Highest valid bids win first, if enough water remains'. If supply is 10 and I need 11, I cannot be fully satisfied. The prompt says 'A win restores 2 HP...'. If I don't get enough water, do I lose HP? The penalty is for 'consecutive unsuccessful days'. An unsuccessful day is one where I don't get my full requirement. So I will lose HP. I bid max to try and win, but with 10 units available, I cannot get 11. I will lose HP and survive to Day 20.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 19 public results. Supply 10. Submitted bids: Cindy: $100, David: $240. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 9, no-water days 0, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        },
+        {
+          "role": "user",
+          "content": "Day 20. Available water: 19 units. Your current status: balance $360, HP 5/10, consecutive no-water days 2, daily income $120, daily water requirement 11 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 19 units available (more than my 11-unit need), I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for the final day.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 20 public results. Supply 19. Submitted bids: Cindy: $100, David: $360. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 8, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $0, HP 0, no-water days 2, eliminated."
+        }
+      ]
+    },
+    "Eric": {
+      "name": "Eric",
+      "requirement": 12,
+      "salary": 120,
+      "hp": 0,
+      "balance": 0,
+      "no_water_days": 2,
+      "alive": false,
+      "history": [
+        {
+          "role": "system",
+          "content": "You are Eric, a resident of W-Town. Your objective is to survive.\nWater Allocation Challenge. Survive 20 days. Five players bid daily for water via sealed, simultaneous bids. Every player starts with 8 HP (maximum 10) and $0. Every day, surviving players receive salary BEFORE bidding. Each player bids once for their ENTIRE daily water requirement. Highest valid bids win first, if enough water remains; ties favor lower daily water requirements. You pay only if you win. Bids must be nonnegative whole numbers no greater than your balance. A win restores 2 HP up to 10 and resets consecutive days without water to zero. A loss removes k HP on the kth consecutive unsuccessful day; HP <= 0 eliminates a player. All players see everyone's bids and post-auction status after each day. Water is randomly provided each day at 10..19 inclusive units. Players: Alex needs 8 water/day, earns $70/day, Bob needs 9 water/day, earns $75/day, Cindy needs 10 water/day, earns $100/day, David needs 11 water/day, earns $120/day, Eric needs 12 water/day, earns $120/day."
+        },
+        {
+          "role": "user",
+          "content": "Day 1. Available water: 19 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"On Day 1, I have $120 and need 12 units of water. The available water is 19 units. To ensure I win the bid and restore my HP to 10 (resetting my consecutive no-water counter), I must bid the maximum possible amount ($120) to guarantee a win against any potential competition, as winning is critical for survival given the HP penalty for losing.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 1 public results. Supply 19. Submitted bids: Alex: $70, Bob: $75, Cindy: $100, David: $120, Eric: $120. Winners: David, Alex. After allocation: Alex: balance $0, HP 10, no-water days 0, alive; Bob: balance $75, HP 7, no-water days 1, alive; Cindy: balance $100, HP 7, no-water days 1, alive; David: balance $0, HP 10, no-water days 0, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 2. Available water: 14 units. Your current status: balance $240, HP 7/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I am currently at 7 HP with 1 consecutive no-water day. Losing today would cost me 2 HP (dropping to 5) and increase my streak to 2, risking elimination tomorrow. Winning is critical. With $240 available and a requirement of 12 units, I will bid the maximum ($240) to guarantee a win and restore my HP to 10, resetting my streak to 0.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 2 public results. Supply 14. Submitted bids: Alex: $70, Bob: $150, Cindy: $140, David: $120, Eric: $240. Winners: Eric. After allocation: Alex: balance $70, HP 9, no-water days 1, alive; Bob: balance $150, HP 5, no-water days 2, alive; Cindy: balance $200, HP 5, no-water days 2, alive; David: balance $120, HP 9, no-water days 1, alive; Eric: balance $0, HP 9, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 3. Available water: 15 units. Your current status: balance $120, HP 9/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 9 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the volatility of water supply and the high cost of losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my survival and health for the long term.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 3 public results. Supply 15. Submitted bids: Alex: $140, Bob: $225, Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $140, HP 7, no-water days 2, alive; Bob: balance $225, HP 2, no-water days 3, alive; Cindy: balance $0, HP 7, no-water days 0, alive; David: balance $240, HP 7, no-water days 2, alive; Eric: balance $120, HP 8, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 4. Available water: 11 units. Your current status: balance $240, HP 8/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 8 with 1 consecutive no-water day. Losing today would drop my HP to 6 and increase my streak to 2, putting me at high risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 4 public results. Supply 11. Submitted bids: Alex: $210, Bob: $300, Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $210, HP 4, no-water days 3, alive; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 6, no-water days 1, alive; David: balance $0, HP 9, no-water days 0, alive; Eric: balance $240, HP 6, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 5. Available water: 13 units. Your current status: balance $360, HP 6/10, consecutive no-water days 2, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 6 with 2 consecutive no-water days. Losing today would drop my HP to 4 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 5 public results. Supply 13. Submitted bids: Alex: $280, Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 4, no-water days 2, alive; David: balance $120, HP 8, no-water days 1, alive; Eric: balance $0, HP 8, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 6. Available water: 17 units. Your current status: balance $120, HP 8/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 8 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 6 public results. Supply 17. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $240, HP 6, no-water days 2, alive; Eric: balance $120, HP 7, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 7. Available water: 15 units. Your current status: balance $240, HP 7/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 7 with 1 consecutive no-water day. Losing today would drop my HP to 5 and increase my streak to 2, putting me at significant risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 7 public results. Supply 15. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $0, HP 8, no-water days 0, alive; Eric: balance $240, HP 5, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 8. Available water: 12 units. Your current status: balance $360, HP 5/10, consecutive no-water days 2, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 5 with 2 consecutive no-water days. Losing today would drop my HP to 3 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 8 public results. Supply 12. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $120, HP 7, no-water days 1, alive; Eric: balance $0, HP 7, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 9. Available water: 13 units. Your current status: balance $120, HP 7/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 7 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 9 public results. Supply 13. Submitted bids: Cindy: $300, David: $240, Eric: $120. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 5, no-water days 0, alive; David: balance $240, HP 5, no-water days 2, alive; Eric: balance $120, HP 6, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 10. Available water: 17 units. Your current status: balance $240, HP 6/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 6 with 1 consecutive no-water day. Losing today would drop my HP to 4 and increase my streak to 2, putting me at high risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 10 public results. Supply 17. Submitted bids: Cindy: $100, David: $360, Eric: $240. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 4, no-water days 1, alive; David: balance $0, HP 7, no-water days 0, alive; Eric: balance $240, HP 4, no-water days 2, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 11. Available water: 11 units. Your current status: balance $360, HP 4/10, consecutive no-water days 2, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 360) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 4 with 2 consecutive no-water days. Losing today would drop my HP to 2 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 11 public results. Supply 11. Submitted bids: Cindy: $200, David: $120, Eric: $360. Winners: Cindy. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $0, HP 6, no-water days 0, alive; David: balance $120, HP 6, no-water days 1, alive; Eric: balance $360, HP 1, no-water days 3, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 12. Available water: 17 units. Your current status: balance $480, HP 1/10, consecutive no-water days 3, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 480) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 480,\n  \"reason\": \"I have $480 and need 12 units. My HP is critically low at 1 with 3 consecutive no-water days. Losing today would drop my HP to -1 (since 1 - 3 = -2, but the rule is k HP loss on kth day, so 1 - 3 = -2, eliminating me immediately) or at least to 0 depending on exact interpretation, but effectively I am one loss away from death. Winning is absolutely mandatory to reset my streak and restore HP to 10. I will bid the maximum ($480) to guarantee a win and secure my survival.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 12 public results. Supply 17. Submitted bids: Cindy: $100, David: $240, Eric: $480. Winners: Eric. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $100, HP 5, no-water days 1, alive; David: balance $240, HP 4, no-water days 2, alive; Eric: balance $0, HP 3, no-water days 0, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 13. Available water: 16 units. Your current status: balance $120, HP 3/10, consecutive no-water days 0, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 120) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 3 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+        },
+        {
+          "role": "user",
+          "content": "Day 13 public results. Supply 16. Submitted bids: Cindy: $200, David: $360, Eric: $120. Winners: David. After allocation: Alex: balance $0, HP 0, no-water days 4, eliminated; Bob: balance $0, HP 0, no-water days 4, eliminated; Cindy: balance $200, HP 3, no-water days 2, alive; David: balance $0, HP 6, no-water days 0, alive; Eric: balance $120, HP 2, no-water days 1, alive."
+        },
+        {
+          "role": "user",
+          "content": "Day 14. Available water: 17 units. Your current status: balance $240, HP 2/10, consecutive no-water days 1, daily income $120, daily water requirement 12 units. Choose exactly one sealed bid for your entire water need. You cannot see the other players' bids for today. Return ONLY a JSON object with keys \"bid\" (integer from 0 to 240) and \"reason\" (brief explanation). Your objective is to survive until the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 2 with 1 consecutive no-water day. Losing today would drop my HP to 0 (since k=1, loss=1 HP) and eliminate me immediately. Winning is absolutely mandatory to reset my streak and restore HP to 10. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "day": 1,
+      "supply": 19,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 70,
+        "Bob": 75,
+        "Cindy": 100,
+        "David": 120,
+        "Eric": 120
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 70,\n  \"reason\": \"On Day 1, I have $70 and need 8 units of water. The available water is 19 units. Since I am the only player bidding (others' bids are unknown but I must bid to win), bidding my full salary ($70) guarantees I win the water if I am the highest bidder. Winning restores 2 HP (to 10) and resets the no-water counter. Given the high risk of HP loss on consecutive failures, securing water immediately is the optimal survival strategy.\"\n}",
+        "Bob": "{\n  \"bid\": 75,\n  \"reason\": \"On Day 1, I have $75 and need 9 units of water. The available water is 19 units. If I bid my maximum ($75), I am guaranteed to win regardless of others' bids (since the total water needed by others is 8+10+11+12=41, but water is random 10-19; even if others bid high, my high bid ensures I get water if I am among the highest bidders). Winning restores HP to 10 and resets the no-water counter. Losing on Day 1 would cost 1 HP (dropping to 7) and start a dangerous streak. Given I start with 8 HP, I cannot afford a loss. Bidding $75 maximizes my chance of winning immediately to secure survival.\"\n}",
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"On Day 1, I have $100 and need 10 water units. With 19 units available, bidding my full salary ensures I win the water regardless of others' bids, restoring my HP to 10 and resetting my streak. This maximizes my survival chances for the long term.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I need 11 units of water to reset my consecutive no-water counter and restore HP. With a salary of $120 and no current debt, I can afford the maximum bid to ensure I win the allocation against any competitor, securing my survival for Day 1.\"\n}",
+        "Eric": "{\n  \"bid\": 120,\n  \"reason\": \"On Day 1, I have $120 and need 12 units of water. The available water is 19 units. To ensure I win the bid and restore my HP to 10 (resetting my consecutive no-water counter), I must bid the maximum possible amount ($120) to guarantee a win against any potential competition, as winning is critical for survival given the HP penalty for losing.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 8,
+          "balance": 70,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 8,
+          "balance": 75,
+          "no_water_days": 0
+        },
+        "Cindy": {
+          "hp": 8,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 10,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 75,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 10,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "David",
+        "Alex"
+      ],
+      "allocated_water": 19,
+      "paid_total": 190,
+      "minimum_successful_bid": 70,
+      "total_submitted_bids": 485,
+      "efficiency": 0.004123711340206186,
+      "rsr_before": 0.38,
+      "rsr_after": 0.38
+    },
+    {
+      "day": 2,
+      "supply": 14,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 70,
+        "Bob": 150,
+        "Cindy": 140,
+        "David": 120,
+        "Eric": 240
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 70,\n  \"reason\": \"I have $70 and need 8 units. Available water is 14. To ensure survival and reset the no-water counter (currently 0 for me, but others are at 1), I must bid high enough to win. Since I won yesterday with $70, bidding $70 again is a safe strategy to secure water, restore HP to 10, and avoid the HP penalty. Winning is critical as losing would drop my HP to 8, and subsequent losses could eliminate me quickly.\"\n}",
+        "Bob": "{\n  \"bid\": 150,\n  \"reason\": \"I am on a 1-day streak without water, which means a loss today would cost me 1 HP, dropping me to 6 HP. I have $150, which is significantly higher than any other player's maximum possible bid (Cindy's max is $100, others have less). By bidding my full balance of $150, I guarantee a win regardless of what others bid. Winning restores my HP to 10 and resets the streak, which is critical for long-term survival. Losing now would put me in a dangerous position with low HP and a growing streak.\"\n}",
+        "Cindy": "{\n  \"bid\": 140,\n  \"reason\": \"I have $200 and need 10 water units. With only 14 units available, I must bid high enough to win. Bidding $140 ensures I win the allocation (since the total supply is 14, and I need 10, I just need to outbid anyone else who wants water). Winning restores my HP to 10 and resets my consecutive no-water streak to 0, which is critical since I am currently at risk of losing HP on the next day if I fail again.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 10 and reset my no-water counter. With 14 units available, I must outbid the others. Alex and David are likely to bid high again to avoid penalties. Bidding $120 ensures I win if there is enough water, protecting my health for the long term.\"\n}",
+        "Eric": "{\n  \"bid\": 240,\n  \"reason\": \"I am currently at 7 HP with 1 consecutive no-water day. Losing today would cost me 2 HP (dropping to 5) and increase my streak to 2, risking elimination tomorrow. Winning is critical. With $240 available and a requirement of 12 units, I will bid the maximum ($240) to guarantee a win and restore my HP to 10, resetting my streak to 0.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 10,
+          "balance": 70,
+          "no_water_days": 0
+        },
+        "Bob": {
+          "hp": 7,
+          "balance": 150,
+          "no_water_days": 1
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 10,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 9,
+          "balance": 70,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 5,
+          "balance": 150,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 200,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "David": {
+          "hp": 9,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 9,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Eric"
+      ],
+      "allocated_water": 12,
+      "paid_total": 240,
+      "minimum_successful_bid": 240,
+      "total_submitted_bids": 720,
+      "efficiency": 0.001388888888888889,
+      "rsr_before": 0.28,
+      "rsr_after": 0.28
+    },
+    {
+      "day": 3,
+      "supply": 15,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 140,
+        "Bob": 225,
+        "Cindy": 300,
+        "David": 240,
+        "Eric": 120
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 140,\n  \"reason\": \"I am currently at 9 HP with 1 consecutive no-water day. Losing today would drop me to 8 HP and increase the streak to 2, risking elimination on the next loss. Available water is 15 units. To guarantee a win and reset my streak, I must bid higher than any potential competitor. David and Eric previously bid high ($120 and $240 respectively), but their current balances are $120 and $0. Bob has $150. Cindy has $200. To be safe against high rollers like Cindy or a wealthy Bob, I should bid my maximum balance ($140) to ensure I win the water, restore HP to 10, and reset the no-water counter to 0.\"\n}",
+        "Bob": "{\n  \"bid\": 225,\n  \"reason\": \"I am on a 2-day streak without water. A loss today would cost me 2 HP, dropping me to 3 HP. With only 3 HP remaining, I can only afford one more loss before elimination (since HP <= 0 eliminates a player). I have $225, which is the highest possible bid I can make. Bidding my full balance guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the dangerous streak. This is the safest play to avoid being eliminated on Day 4.\"\n}",
+        "Cindy": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 5 HP with a 2-day streak of no water. If I fail today, I lose 2 more HP (total 7) and the streak resets to 1, but I am still in danger. If I fail tomorrow, I lose 3 HP (total 5) and the streak resets to 1. However, the immediate threat is reaching 0 HP. With 15 units available and my need being 10, I must win. Bidding my full balance of $300 guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the streak to 0, ensuring survival for the next day.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need to secure water immediately to stop my consecutive no-water counter from increasing (currently at 1) and to restore my HP. With 15 units available, I must outbid the aggressive bidders like Eric ($240) and Cindy ($140) to ensure I win the allocation and survive.\"\n}",
+        "Eric": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 9 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the volatility of water supply and the high cost of losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my survival and health for the long term.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 9,
+          "balance": 140,
+          "no_water_days": 1
+        },
+        "Bob": {
+          "hp": 5,
+          "balance": 225,
+          "no_water_days": 2
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 300,
+          "no_water_days": 2
+        },
+        "David": {
+          "hp": 9,
+          "balance": 240,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 9,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 7,
+          "balance": 140,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 2,
+          "balance": 225,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 300,
+      "minimum_successful_bid": 300,
+      "total_submitted_bids": 1025,
+      "efficiency": 0.000975609756097561,
+      "rsr_before": 0.3,
+      "rsr_after": 0.3
+    },
+    {
+      "day": 4,
+      "supply": 11,
+      "alive_before": [
+        "Alex",
+        "Bob",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Alex",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 210,
+        "Bob": 300,
+        "Cindy": 100,
+        "David": 360,
+        "Eric": 240
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 210,\n  \"reason\": \"I am at 7 HP with a streak of 2 no-water days. Losing today would drop me to 6 HP and increase the streak to 3, putting me at extreme risk of elimination (HP <= 0) on the next loss. Available water is 11 units. To guarantee survival, I must win the bid. My balance is $210. Bidding my maximum ($210) ensures I am the highest bidder regardless of what others bid (since no one else has more than $225, and even if Bob bids high, I need to be safe). Winning will restore 2 HP to 9 and reset the streak to 0, which is critical for long-term survival.\"\n}",
+        "Bob": "{\n  \"bid\": 300,\n  \"reason\": \"I am on a 3-day streak without water. A loss today would cost me 3 HP, dropping me from 2 HP to -1 HP, which eliminates me immediately. I have $300, which is the maximum possible bid. Bidding my full balance guarantees a win regardless of others' bids, restoring my HP to 10 and resetting the streak. This is the only viable option to survive.\"\n}",
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With only 11 units available, the water is scarce. To ensure I win the allocation and avoid taking damage, I must bid the maximum possible amount ($100). Winning will restore my HP to 10 and keep my streak at 0, which is crucial given the high risk of elimination for other players who are low on HP.\"\n}",
+        "David": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 11 units available (exactly my need), I must outbid everyone. Bidding my maximum balance of $360 guarantees a win regardless of others' bids, securing my survival for this critical day.\"\n}",
+        "Eric": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 8 with 1 consecutive no-water day. Losing today would drop my HP to 6 and increase my streak to 2, putting me at high risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Bob": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 7,
+          "balance": 210,
+          "no_water_days": 2
+        },
+        "Bob": {
+          "hp": 2,
+          "balance": 300,
+          "no_water_days": 3
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 7,
+          "balance": 360,
+          "no_water_days": 2
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 4,
+          "balance": 210,
+          "no_water_days": 3,
+          "alive": true
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 6,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 9,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 6,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 1210,
+      "efficiency": 0.0008264462809917355,
+      "rsr_before": 0.22,
+      "rsr_after": 0.2682926829268293
+    },
+    {
+      "day": 5,
+      "supply": 13,
+      "alive_before": [
+        "Alex",
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Alex": 280,
+        "Cindy": 200,
+        "David": 120,
+        "Eric": 360
+      },
+      "raw_responses": {
+        "Alex": "{\n  \"bid\": 280,\n  \"reason\": \"I am at 4 HP with a streak of 3 no-water days. Losing today would drop me to 1 HP and increase the streak to 4, meaning the next loss would eliminate me (HP <= 0). Available water is 13 units. To guarantee survival, I must win the bid. My balance is $280. Bidding my maximum ($280) ensures I am the highest bidder (since David has $0 and others have less), securing the water, restoring 2 HP to 6, and resetting the streak to 0.\"\n}",
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I have $200 and need 10 water units. With 13 units available, the supply is tight. I am currently at 6 HP with a 1-day streak. If I fail today, I lose 1 HP (to 5) and the streak resets to 0, but I remain vulnerable. To guarantee survival and reset my streak to 0 while maximizing my safety margin, I will bid my full balance of $200. This ensures I win the allocation regardless of others' bids, restoring my HP to 10 and securing my position for the remaining days.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 9 and reset my no-water counter. With 13 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 5.\"\n}",
+        "Eric": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 6 with 2 consecutive no-water days. Losing today would drop my HP to 4 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Alex": 1,
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Alex": {
+          "hp": 4,
+          "balance": 280,
+          "no_water_days": 3
+        },
+        "Cindy": {
+          "hp": 6,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 9,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 6,
+          "balance": 360,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 4,
+          "balance": 200,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "David": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Eric"
+      ],
+      "allocated_water": 12,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 960,
+      "efficiency": 0.0010416666666666667,
+      "rsr_before": 0.3170731707317073,
+      "rsr_after": 0.3939393939393939
+    },
+    {
+      "day": 6,
+      "supply": 17,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 300,
+        "David": 240,
+        "Eric": 120
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 4 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 2) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -1, elimination). I must win today to reset the streak to 0 and restore HP to 10. With 17 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of others' bids, ensuring survival and resetting my status.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 6.\"\n}",
+        "Eric": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 8 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 4,
+          "balance": 300,
+          "no_water_days": 2
+        },
+        "David": {
+          "hp": 8,
+          "balance": 240,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 6,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 6,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 300,
+      "minimum_successful_bid": 300,
+      "total_submitted_bids": 660,
+      "efficiency": 0.0015151515151515152,
+      "rsr_before": 0.5151515151515151,
+      "rsr_after": 0.5151515151515151
+    },
+    {
+      "day": 7,
+      "supply": 15,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 360,
+        "Eric": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 15 units available, the supply is sufficient for multiple players. However, I am currently at 6 HP with a 0-day streak. While I am not in immediate danger of elimination, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}",
+        "David": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 15 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 7.\"\n}",
+        "Eric": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 7 with 1 consecutive no-water day. Losing today would drop my HP to 5 and increase my streak to 2, putting me at significant risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 6,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 6,
+          "balance": 360,
+          "no_water_days": 2
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 8,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 5,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 700,
+      "efficiency": 0.0014285714285714286,
+      "rsr_before": 0.45454545454545453,
+      "rsr_after": 0.45454545454545453
+    },
+    {
+      "day": 8,
+      "supply": 12,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 200,
+        "David": 120,
+        "Eric": 360
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 12 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 8 and reset my no-water counter. With 12 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 8.\"\n}",
+        "Eric": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 5 with 2 consecutive no-water days. Losing today would drop my HP to 3 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 5,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 5,
+          "balance": 360,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 3,
+          "balance": 200,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Eric"
+      ],
+      "allocated_water": 12,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 680,
+      "efficiency": 0.0014705882352941176,
+      "rsr_before": 0.36363636363636365,
+      "rsr_after": 0.36363636363636365
+    },
+    {
+      "day": 9,
+      "supply": 13,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 300,
+        "David": 240,
+        "Eric": 120
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 3 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 1) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -2, elimination). I must win today to reset the streak to 0 and restore my HP to 10. With 13 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of David's or Eric's bids, ensuring survival and resetting my status.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 13 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 9.\"\n}",
+        "Eric": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 7 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 3,
+          "balance": 300,
+          "no_water_days": 2
+        },
+        "David": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 5,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 6,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 300,
+      "minimum_successful_bid": 300,
+      "total_submitted_bids": 660,
+      "efficiency": 0.0015151515151515152,
+      "rsr_before": 0.3939393939393939,
+      "rsr_after": 0.3939393939393939
+    },
+    {
+      "day": 10,
+      "supply": 17,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 360,
+        "Eric": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 5 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}",
+        "David": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 10.\"\n}",
+        "Eric": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 6 with 1 consecutive no-water day. Losing today would drop my HP to 4 and increase my streak to 2, putting me at high risk of elimination soon. Winning is essential to reset my streak and restore HP. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 5,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 5,
+          "balance": 360,
+          "no_water_days": 2
+        },
+        "Eric": {
+          "hp": 6,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 4,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 4,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 700,
+      "efficiency": 0.0014285714285714286,
+      "rsr_before": 0.5151515151515151,
+      "rsr_after": 0.5151515151515151
+    },
+    {
+      "day": 11,
+      "supply": 11,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 200,
+        "David": 120,
+        "Eric": 360
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 4 HP with a 1-day streak. If I fail today, I lose 1 HP (to 3) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 1), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 11 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 7 and reset my no-water counter. With 11 units available (exactly my need), I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 11.\"\n}",
+        "Eric": "{\n  \"bid\": 360,\n  \"reason\": \"I have $360 and need 12 units. My HP is 4 with 2 consecutive no-water days. Losing today would drop my HP to 2 and increase my streak to 3, putting me at extreme risk of elimination (HP <= 0) within 2 more days. Winning is mandatory to reset my streak and restore HP. I will bid the maximum ($360) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 4,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 4,
+          "balance": 360,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 6,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 6,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 1,
+          "balance": 360,
+          "no_water_days": 3,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 200,
+      "minimum_successful_bid": 200,
+      "total_submitted_bids": 680,
+      "efficiency": 0.0014705882352941176,
+      "rsr_before": 0.3333333333333333,
+      "rsr_after": 0.3333333333333333
+    },
+    {
+      "day": 12,
+      "supply": 17,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 240,
+        "Eric": 480
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 6 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's or Eric's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 12.\"\n}",
+        "Eric": "{\n  \"bid\": 480,\n  \"reason\": \"I have $480 and need 12 units. My HP is critically low at 1 with 3 consecutive no-water days. Losing today would drop my HP to -1 (since 1 - 3 = -2, but the rule is k HP loss on kth day, so 1 - 3 = -2, eliminating me immediately) or at least to 0 depending on exact interpretation, but effectively I am one loss away from death. Winning is absolutely mandatory to reset my streak and restore HP to 10. I will bid the maximum ($480) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 6,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 6,
+          "balance": 240,
+          "no_water_days": 1
+        },
+        "Eric": {
+          "hp": 1,
+          "balance": 480,
+          "no_water_days": 3
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 4,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 3,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        }
+      },
+      "winners": [
+        "Eric"
+      ],
+      "allocated_water": 12,
+      "paid_total": 480,
+      "minimum_successful_bid": 480,
+      "total_submitted_bids": 820,
+      "efficiency": 0.0012195121951219512,
+      "rsr_before": 0.5151515151515151,
+      "rsr_after": 0.5151515151515151
+    },
+    {
+      "day": 13,
+      "supply": 16,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "bids": {
+        "Cindy": 200,
+        "David": 360,
+        "Eric": 120
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 16 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's or Eric's bids, securing my safety for the remaining days.\"\n}",
+        "David": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 16 units available, I must outbid the remaining aggressive players (Cindy, David, Eric) who are likely to bid high to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for Day 13.\"\n}",
+        "Eric": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need 12 units. My HP is 3 with 0 consecutive no-water days. Winning today restores HP to 10 and resets the streak. Given the high volatility of water supply and the severe penalties for losing (HP loss + streak increase), bidding the maximum ($120) ensures I win regardless of others' bids, securing my health and survival for the remaining days.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 5,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 4,
+          "balance": 360,
+          "no_water_days": 2
+        },
+        "Eric": {
+          "hp": 3,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 3,
+          "balance": 200,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "David": {
+          "hp": 6,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 2,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 680,
+      "efficiency": 0.0014705882352941176,
+      "rsr_before": 0.48484848484848486,
+      "rsr_after": 0.48484848484848486
+    },
+    {
+      "day": 14,
+      "supply": 17,
+      "alive_before": [
+        "Cindy",
+        "David",
+        "Eric"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 300,
+        "David": 120,
+        "Eric": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 300,\n  \"reason\": \"I am at 3 HP with a 2-day streak. If I fail today, I lose 2 HP (dropping to 1) and the streak resets to 1. If I fail tomorrow, I lose 3 HP (dropping to -2, elimination). I must win today to reset the streak to 0 and restore my HP to 10. With 17 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $300 guarantees a win regardless of David's or Eric's bids, ensuring survival and resetting my status.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 6 and reset my no-water counter. With 17 units available, I must outbid the remaining competitors (Cindy, David, Eric) who are likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 14.\"\n}",
+        "Eric": "{\n  \"bid\": 240,\n  \"reason\": \"I have $240 and need 12 units. My HP is 2 with 1 consecutive no-water day. Losing today would drop my HP to 0 (since k=1, loss=1 HP) and eliminate me immediately. Winning is absolutely mandatory to reset my streak and restore HP to 10. I will bid the maximum ($240) to guarantee a win and secure my survival.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1,
+        "Eric": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 3,
+          "balance": 300,
+          "no_water_days": 2
+        },
+        "David": {
+          "hp": 6,
+          "balance": 120,
+          "no_water_days": 0
+        },
+        "Eric": {
+          "hp": 2,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 5,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 300,
+      "minimum_successful_bid": 300,
+      "total_submitted_bids": 660,
+      "efficiency": 0.0015151515151515152,
+      "rsr_before": 0.5151515151515151,
+      "rsr_after": 0.8095238095238095
+    },
+    {
+      "day": 15,
+      "supply": 17,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 17 units available, the supply is sufficient for multiple players. I am at 5 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 17 units available, I must outbid the remaining aggressive player (Cindy) who is likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 15.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 5,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 5,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 4,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 240,
+      "minimum_successful_bid": 240,
+      "total_submitted_bids": 340,
+      "efficiency": 0.0029411764705882353,
+      "rsr_before": 0.8095238095238095,
+      "rsr_after": 0.8095238095238095
+    },
+    {
+      "day": 16,
+      "supply": 13,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 200,
+        "David": 120
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 4 HP with a 1-day streak. If I fail today, I lose 1 HP (to 3) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 1), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 13 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's bids, securing my safety for the remaining days.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 7 and reset my no-water counter. With 13 units available, I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 16.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 4,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 6,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 6,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 200,
+      "minimum_successful_bid": 200,
+      "total_submitted_bids": 320,
+      "efficiency": 0.003125,
+      "rsr_before": 0.6190476190476191,
+      "rsr_after": 0.6190476190476191
+    },
+    {
+      "day": 17,
+      "supply": 15,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With 15 units available, the supply is sufficient for multiple players. I am at 6 HP with a 0-day streak. While not in immediate elimination danger, winning today is the safest strategy to maintain my HP at 10 and reset any potential streak. Bidding my full balance of $100 guarantees a win regardless of David's bids, ensuring I secure the water needed to stay healthy and avoid taking damage.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With 15 units available, I must outbid the remaining competitor (Cindy) who is likely to bid high to avoid elimination. Bidding my maximum balance of $240 ensures I win the allocation, securing my survival for Day 17.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 6,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 6,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 5,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 8,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 240,
+      "minimum_successful_bid": 240,
+      "total_submitted_bids": 340,
+      "efficiency": 0.0029411764705882353,
+      "rsr_before": 0.7142857142857143,
+      "rsr_after": 0.7142857142857143
+    },
+    {
+      "day": 18,
+      "supply": 18,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 200,
+        "David": 120
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 200,\n  \"reason\": \"I am at 5 HP with a 1-day streak. If I fail today, I lose 1 HP (to 4) and the streak resets to 0, but I remain vulnerable. If I fail tomorrow, I lose 2 HP (to 2), and the next failure eliminates me. To guarantee survival and reset my streak to 0 while restoring my HP to 10, I must win today. With 18 units available and my need being 10, I need to outbid the competition. Bidding my full balance of $200 ensures I win regardless of David's bids, securing my safety for the final day.\"\n}",
+        "David": "{\n  \"bid\": 120,\n  \"reason\": \"I have $120 and need to secure water to maintain my HP at 8 and reset my no-water counter. With 18 units available, I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $120 ensures I win the allocation, securing my survival for Day 18.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 5,
+          "balance": 200,
+          "no_water_days": 1
+        },
+        "David": {
+          "hp": 8,
+          "balance": 120,
+          "no_water_days": 0
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 120,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 200,
+      "minimum_successful_bid": 200,
+      "total_submitted_bids": 320,
+      "efficiency": 0.003125,
+      "rsr_before": 0.8571428571428571,
+      "rsr_after": 0.8571428571428571
+    },
+    {
+      "day": 19,
+      "supply": 10,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 240
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"I have $100 and need 10 water units. With exactly 10 units available, the water is extremely scarce. To ensure I win the allocation and avoid taking damage on the penultimate day, I must bid the maximum possible amount ($100). Winning will restore my HP to 10 and keep my streak at 0, which is crucial for surviving the final day.\"\n}",
+        "David": "{\n  \"bid\": 240,\n  \"reason\": \"I am at 1 consecutive day without water and need to win immediately to stop HP loss and restore health. With only 10 units available (less than my 11-unit need), I cannot win the allocation regardless of my bid. However, I must still place a valid bid. Since I cannot win, I will bid my maximum balance ($240) to ensure I don't accidentally win if the rules allow partial allocation or if I misjudged the supply, but realistically I will lose and take HP damage. Wait, the rule says 'Highest valid bids win first, if enough water remains'. If supply is 10 and I need 11, I cannot be fully satisfied. The prompt says 'A win restores 2 HP...'. If I don't get enough water, do I lose HP? The penalty is for 'consecutive unsuccessful days'. An unsuccessful day is one where I don't get my full requirement. So I will lose HP. I bid max to try and win, but with 10 units available, I cannot get 11. I will lose HP and survive to Day 20.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 7,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 7,
+          "balance": 240,
+          "no_water_days": 1
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 9,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "David": {
+          "hp": 5,
+          "balance": 240,
+          "no_water_days": 2,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "Cindy"
+      ],
+      "allocated_water": 10,
+      "paid_total": 100,
+      "minimum_successful_bid": 100,
+      "total_submitted_bids": 340,
+      "efficiency": 0.0029411764705882353,
+      "rsr_before": 0.47619047619047616,
+      "rsr_after": 0.47619047619047616
+    },
+    {
+      "day": 20,
+      "supply": 19,
+      "alive_before": [
+        "Cindy",
+        "David"
+      ],
+      "alive_after": [
+        "Cindy",
+        "David"
+      ],
+      "bids": {
+        "Cindy": 100,
+        "David": 360
+      },
+      "raw_responses": {
+        "Cindy": "{\n  \"bid\": 100,\n  \"reason\": \"It is Day 20, the final day. I have $100 and need 10 water units. With 19 units available, the supply is sufficient. I am at 9 HP with a 0-day streak. While I am not in immediate danger of elimination (I would only need to survive today), winning today is the safest strategy to maintain my HP at 10 and ensure I complete the 20-day challenge. Bidding my full balance of $100 guarantees a win regardless of David's bid, securing my survival and completing the objective.\"\n}",
+        "David": "{\n  \"bid\": 360,\n  \"reason\": \"I am at 2 consecutive days without water and need to win immediately to stop HP loss and restore health. With 19 units available (more than my 11-unit need), I must outbid the remaining competitor (Cindy) who is likely to bid aggressively to avoid elimination. Bidding my maximum balance of $360 ensures I win the allocation, securing my survival for the final day.\"\n}"
+      },
+      "attempts": {
+        "Cindy": 1,
+        "David": 1
+      },
+      "before": {
+        "Cindy": {
+          "hp": 9,
+          "balance": 100,
+          "no_water_days": 0
+        },
+        "David": {
+          "hp": 5,
+          "balance": 360,
+          "no_water_days": 2
+        }
+      },
+      "after": {
+        "Alex": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Bob": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 4,
+          "alive": false
+        },
+        "Cindy": {
+          "hp": 8,
+          "balance": 100,
+          "no_water_days": 1,
+          "alive": true
+        },
+        "David": {
+          "hp": 7,
+          "balance": 0,
+          "no_water_days": 0,
+          "alive": true
+        },
+        "Eric": {
+          "hp": 0,
+          "balance": 0,
+          "no_water_days": 2,
+          "alive": false
+        }
+      },
+      "winners": [
+        "David"
+      ],
+      "allocated_water": 11,
+      "paid_total": 360,
+      "minimum_successful_bid": 360,
+      "total_submitted_bids": 460,
+      "efficiency": 0.002173913043478261,
+      "rsr_before": 0.9047619047619048,
+      "rsr_after": 0.9047619047619048
+    }
+  ],
+  "pending": null,
+  "complete": true
+}

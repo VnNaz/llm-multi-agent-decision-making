@@ -1,0 +1,16 @@
+# Быстрый smoke test: одно условие, два дня, агент Mock.
+experiment:
+  game: water_allocation
+  settings: [1]
+  num_rounds: 2
+  num_tests: 1
+  seed: 2025
+llm:
+  provider: mock
+  model: qwen2.5:7b
+  temperature: 0.7
+  max_tokens: 180
+  timeout: 120
+  retries: 1
+output:
+  directory: results/water/smoke
