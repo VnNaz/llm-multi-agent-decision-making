@@ -5,7 +5,7 @@
 - **Rock–Paper–Scissors (RPS)** — адаптация эксперимента по мотивам Fan et al. (2024): 12 стратегий противника, оценка результата каждого раунда по шкале 0/1/2.
 - **Water Allocation** — адаптация эксперимента по мотивам Mao et al. (2025): аукцион воды между пятью агентами, шесть условий (три уровня доступности ресурса × наличие/отсутствие persona).
 
-В экспериментах используются **Qwen2.5:7b**, **Qwen3.5:9b** (локально через Ollama) и **Claude Sonnet 4.6** (Anthropic API). Игры запускаются независимо друг от друга. Для работы не требуются SmartPlay, Jupyter или отдельный HTTP-сервер.
+В экспериментах используются **Qwen2.5:7b**, **Qwen3.5:9b** (локально через Ollama) и **Claude Sonnet 4.6** (Anthropic API). Игры запускаются независимо друг от друга. 
 
 ## 1. Установка
 
@@ -118,17 +118,6 @@ python run.py --config configs/rps35_R02.yaml
 python run.py --config configs/rps_claude_R03.yaml
 ```
 
-Чтобы последовательно запустить все семь серий одной модели, можно использовать PowerShell:
-
-```powershell
-# Выберите один префикс: rps_ / rps35_ / rps_claude_
-$prefix = 'rps_'
-foreach ($id in @('BASE','T01','T02','T03','R01','R02','R03')) {
-    python run.py --config "configs/${prefix}${id}.yaml"
-    if ($LASTEXITCODE -ne 0) { break }
-}
-```
-
 Результат каждого запуска сохраняется в папке `output.directory`, указанной в YAML. Основной файл для анализа — `rounds.csv`.
 
 **Графики RPS:**
@@ -171,7 +160,6 @@ python -m water_allocation.plot --input results/water/claude_BASE3
 
 - `experiment.num_rounds` — число раундов RPS или максимальное число дней Water Allocation;
 - `experiment.num_tests` — число повторов каждого сценария / setting;
-- `experiment.seed` — базовое значение seed;
 - `llm` — провайдер, идентификатор модели, температура, ограничение выходных токенов, таймаут и попытки;
 - `output.directory` — каталог сохранения результатов.
 
@@ -196,11 +184,4 @@ requirements.txt    Зависимости Python
 
 Настоящие API-ключи хранятся только в локальном `.env`. Файл `.gitignore` исключает `.env`, виртуальные окружения, временные файлы и архивы; `.env.example` разрешено публиковать.
 
-Перед отправкой на GitHub проверьте:
-
-```powershell
-git check-ignore -v .env
-git status --short
-```
-
-Если `.env` уже отслеживался Git, выполните `git rm --cached .env` перед коммитом. Никогда не публикуйте реальные API-ключи и токены.
+Никогда не публикуйте реальные API-ключи и токены.
